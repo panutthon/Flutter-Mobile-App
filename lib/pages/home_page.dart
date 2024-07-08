@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-
+    _counter = 20;
     ///print('initState');
   }
 
