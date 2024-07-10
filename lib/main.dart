@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'pages/home_page.dart';
 
 void main() {
@@ -13,12 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App demo',
+      title: 'Demo',
       debugShowCheckedModeBanner: false, // ซ่อน Debug banner
       theme: ThemeData(
         primarySwatch: Colors.blue, // สีหลักของแอพ
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        canvasColor: Colors.yellow.shade100, // สีพื้นหลังของแอพ
       ),
       home: const MyHomePage(), // HomePage หรือหน้าแรกของแอพ
     );

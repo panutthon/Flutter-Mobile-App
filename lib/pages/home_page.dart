@@ -30,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _counter = 20;
+
     ///print('initState');
   }
 
@@ -37,8 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('My Flutter test app'),
+        title: Image.asset('assets/images/logo.png', width: 50, height: 50),
+        centerTitle: true,
+        //const Text('Demo'),
       ),
       body: Center(
         child: Column(
@@ -71,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        backgroundColor: Colors.red,
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
