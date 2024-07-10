@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -18,12 +19,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset('assets/images/logo.png', width: 50, height: 50),
-        centerTitle: true,
-        //const Text('Demo'),
-      ),
-      body: const Text('Hello World!'),
-    );
+        appBar: AppBar(
+          title: Image.asset('assets/images/logo.png', width: 50, height: 50),
+          centerTitle: true,
+        ),
+        body: OutlinedButton(
+          onPressed: () {
+            Get.toNamed('/about');
+          },
+          child: const Text('About Page'),
+        ));
   }
 }
