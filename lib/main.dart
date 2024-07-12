@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'pages/about_page.dart';
 import 'pages/home_page.dart';
+import 'pages/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => const MyHomePage()),
         GetPage(name: '/about', page: () => const AboutPage()),
+        GetPage(name: '/profile', page: () => const MyProfilePage()),
       ],
     );
   }

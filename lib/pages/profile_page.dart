@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class MyProfilePage extends StatefulWidget {
+  const MyProfilePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyProfilePage> createState() => _MyProfilePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyProfilePageState extends State<MyProfilePage> {
   @override
   void initState() {
     super.initState();
@@ -20,6 +20,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.white, //change your color here
+        ),
         toolbarHeight: 85.0,
         // backgroundColor: const Color(0xFF3294FF),
         // title: Image.asset('assets/images/logo.png', width: 50, height: 50),
@@ -71,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 400,
+              height: 200,
               width: 350,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -92,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 350,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Color(0xFF73B5FF),
+                color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromRGBO(200, 200, 200, 0.5),
