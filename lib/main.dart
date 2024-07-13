@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'pages/about_page.dart';
 import 'pages/home_page.dart';
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
+      theme: ThemeData(
+        textTheme: GoogleFonts.notoSansThaiTextTheme(),
+      ),
       //home: const MyHomePage()
       //home: const AboutPage()
       initialRoute: '/',

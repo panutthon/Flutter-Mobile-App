@@ -20,6 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 85.0,
         // backgroundColor: const Color(0xFF3294FF),
         // title: Image.asset('assets/images/logo.png', width: 50, height: 50),

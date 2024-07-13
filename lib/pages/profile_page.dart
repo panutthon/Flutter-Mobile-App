@@ -28,7 +28,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
         // title: Image.asset('assets/images/logo.png', width: 50, height: 50),
         // centerTitle: true,
         title: const Text(
-          'WhatAiDan',
+          'โปรไฟล์',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -74,7 +74,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 200,
+              height: 300,
               width: 350,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -91,7 +91,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
             ),
             const SizedBox(height: 20), // Add some space between the containers
             Container(
-              height: 100,
+              height: 80,
               width: 350,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
