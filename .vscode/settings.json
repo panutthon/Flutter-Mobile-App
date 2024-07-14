@@ -1,4 +1,5 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "cmake.sourceDirectory": "C:/dev/Project-Flutter/flutter_mobile/windows/flutter"
+    "cmake.sourceDirectory": "C:/dev/Project-Flutter/flutter_mobile/windows/flutter",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
