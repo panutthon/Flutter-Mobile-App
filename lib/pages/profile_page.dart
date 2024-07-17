@@ -57,6 +57,8 @@ class CurvedPainter extends CustomPainter {
 }
 
 class _MyProfilePageState extends State<MyProfilePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
@@ -68,6 +70,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(120.0),
           child: Stack(
@@ -109,11 +112,52 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       icon: const Icon(Icons.notifications,
                           color: Colors.white, size: 30.0),
                       onPressed: () {
-                        Get.toNamed('/about');
+                        _scaffoldKey.currentState?.openEndDrawer();
                       },
                     ),
                   ),
                 ],
+              ),
+            ],
+          ),
+        ),
+        endDrawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color(0xFF3294FF),
+                ),
+                child: Text(
+                  'แจ้งเตือน',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.home),
+                title: const Text('Home'),
+                onTap: () {
+                  Get.toNamed('/');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: const Text('Scan'),
+                onTap: () {
+                  Get.toNamed('/about');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text('Profile'),
+                onTap: () {
+                  Get.toNamed('/profile');
+                },
               ),
             ],
           ),
@@ -155,32 +199,37 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         )
                       ],
                     ),
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.person,
-                                size: 40,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                'แก้ไขโปรไฟล์',
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.black),
-                              ),
-                            ],
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed('/editprofile');
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  size: 40,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(width: 10),
+                                Text(
+                                  'แก้ไขโปรไฟล์',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.black),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           height: 5,
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Row(
                             children: [
@@ -198,25 +247,30 @@ class _MyProfilePageState extends State<MyProfilePage> {
                             ],
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           height: 5,
                         ),
-                        Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.settings,
-                                size: 40,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                'ตั้งค่า',
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.black),
-                              ),
-                            ],
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed('/setting');
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.settings,
+                                  size: 40,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(width: 10),
+                                Text(
+                                  'ตั้งค่า',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.black),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],

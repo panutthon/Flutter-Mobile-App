@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SettingPage extends StatelessWidget {
-  const SettingPage({super.key});
+class EditPage extends StatelessWidget {
+  const EditPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class SettingPage extends StatelessWidget {
         // title: Image.asset('assets/images/logo.png', width: 50, height: 50),
         // centerTitle: true,
         title: const Text(
-          'ตั้งค่า',
+          'แก้ไขโปรไฟล์',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
