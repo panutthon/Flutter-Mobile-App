@@ -9,6 +9,53 @@ class MyProfilePage extends StatefulWidget {
   State<MyProfilePage> createState() => _MyProfilePageState();
 }
 
+class CurvedPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Rect rect = Rect.fromLTWH(0, 0, size.width, size.height);
+    const Gradient gradient = LinearGradient(
+      colors: [Color(0xFF4EC9FF), Color(0xFF3294FF)],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
+
+    var paint = Paint()
+      ..shader = gradient.createShader(rect)
+      ..style = PaintingStyle.fill;
+
+    var shadowPaint = Paint()
+      ..color = Colors.black.withOpacity(0.2)
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5.0);
+
+    var path = Path()
+      ..moveTo(0, 0)
+      ..lineTo(0, size.height * 1.00)
+      ..quadraticBezierTo(
+        size.width * 0.1,
+        size.height * 1.25,
+        size.width * 0.50,
+        size.height * 0.75,
+      )
+      ..quadraticBezierTo(
+        size.width * 0.75,
+        size.height * 0.45,
+        size.width,
+        size.height * 1.2,
+      )
+      ..lineTo(size.width, 0)
+      ..close();
+
+    // วาดเงา
+    canvas.drawPath(path.shift(const Offset(0, 2)), shadowPaint);
+
+    // วาดเส้นโค้ง
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
 class _MyProfilePageState extends State<MyProfilePage> {
   @override
   void initState() {
@@ -21,52 +68,54 @@ class _MyProfilePageState extends State<MyProfilePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          iconTheme: const IconThemeData(
-            color: Colors.white, //change your color here
-          ),
-          toolbarHeight: 85.0,
-          title: const Text(
-            'โปรไฟล์',
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.calendar_month_outlined,
-                  color: Colors.white, size: 30.0),
-              onPressed: () {
-                Get.toNamed('/about');
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.notifications,
-                  color: Colors.white, size: 30.0),
-              onPressed: () {
-                Get.toNamed('/about');
-              },
-            ),
-          ],
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF3294FF), Color(0xFF4EC9FF)],
-                begin: Alignment.bottomRight,
-                end: Alignment.topLeft,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(120.0),
+          child: Stack(
+            children: [
+              CustomPaint(
+                size: Size(MediaQuery.of(context).size.width, 120.0),
+                painter: CurvedPainter(),
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey,
-                  blurRadius: 5,
-                  spreadRadius: 1,
-                  offset: Offset(0, 0),
+              AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                automaticallyImplyLeading: false,
+                toolbarHeight: 85.0,
+                title: const Padding(
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: Text(
+                    'WhatAiDan',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ],
-            ),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: IconButton(
+                      icon: const Icon(Icons.calendar_month_outlined,
+                          color: Colors.white, size: 30.0),
+                      onPressed: () {
+                        Get.toNamed('/about');
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: IconButton(
+                      icon: const Icon(Icons.notifications,
+                          color: Colors.white, size: 30.0),
+                      onPressed: () {
+                        Get.toNamed('/about');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
         body: CustomScrollView(

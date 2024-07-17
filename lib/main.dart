@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'pages/about_page.dart';
+import 'pages/adddata_page.dart';
+import 'pages/analyzedata_page.dart';
+import 'pages/history_page.dart';
 import 'pages/home_page.dart';
 import 'pages/profile_page.dart';
 import 'pages/setting_page.dart';
@@ -31,6 +34,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/about', page: () => const AboutPage()),
         GetPage(name: '/profile', page: () => const MyProfilePage()),
         GetPage(name: '/setting', page: () => const SettingPage()),
+        GetPage(name: '/adddata', page: () => const AdddataPage()),
+        GetPage(name: '/history', page: () => const HistoryPage()),
+        GetPage(name: '/analyzedata', page: () => const AnalyzedataPage()),
       ],
     );
   }

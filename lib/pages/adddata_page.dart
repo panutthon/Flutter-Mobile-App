@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AboutPage extends StatefulWidget {
-  const AboutPage({super.key});
+class AdddataPage extends StatelessWidget {
+  const AdddataPage({super.key});
 
-  @override
-  State<AboutPage> createState() => _AboutPageState();
-}
-
-class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +15,7 @@ class _AboutPageState extends State<AboutPage> {
         // title: Image.asset('assets/images/logo.png', width: 50, height: 50),
         // centerTitle: true,
         title: const Text(
-          'Pressure Reference',
+          'บันทึกค่าความดันโลหิต',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
