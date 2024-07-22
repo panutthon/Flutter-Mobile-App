@@ -61,7 +61,7 @@ Widget _buildCircle(String value, String label, Color color) {
     height: 80,
     decoration: BoxDecoration(
       shape: BoxShape.circle,
-      border: Border.all(color: color, width: 2),
+      border: Border.all(color: color, width: 2.5),
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -72,7 +72,11 @@ Widget _buildCircle(String value, String label, Color color) {
         ),
         Text(
           label,
-          style: TextStyle(fontSize: 14, color: color),
+          style: TextStyle(
+            fontSize: 14,
+            color: color,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ],
     ),
@@ -330,22 +334,50 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(Icons.calendar_today, color: Colors.blue),
-                            Text('13/06/67', style: TextStyle(fontSize: 16)),
-                            Icon(Icons.access_time, color: Colors.blue),
-                            Text('18.35', style: TextStyle(fontSize: 16)),
+                            Padding(
+                              padding: EdgeInsets.only(left: 16.0),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.calendar_today_outlined,
+                                      color: Colors.blue),
+                                  SizedBox(width: 10),
+                                  Text('13/06/67',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        // fontWeight: FontWeight.bold,
+                                      )),
+                                  SizedBox(width: 16),
+                                  Icon(Icons.access_alarm, color: Colors.blue),
+                                  SizedBox(width: 10),
+                                  Text('18.35',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        // fontWeight: FontWeight.bold,
+                                      )),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 8),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 16.0),
+                                child: Text(
+                                  'ระดับ : สูงมาก',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            // Rest of your code (circles, etc.)
                           ],
                         ),
-                        const SizedBox(height: 20),
-                        const Text('ระดับ : สูงมาก',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold)),
-                        const SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
