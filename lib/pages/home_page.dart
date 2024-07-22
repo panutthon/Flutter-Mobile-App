@@ -55,6 +55,30 @@ class CurvedPainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
+Widget _buildCircle(String value, String label, Color color) {
+  return Container(
+    width: 80,
+    height: 80,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      border: Border.all(color: color, width: 2),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          value,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          label,
+          style: TextStyle(fontSize: 14, color: color),
+        ),
+      ],
+    ),
+  );
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -260,7 +284,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             style: TextStyle(
                                               fontSize: 16,
                                               color: Colors.white,
-                                              fontWeight: FontWeight.Bold,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                           Text(
@@ -306,7 +330,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Icon(Icons.calendar_today, color: Colors.blue),
@@ -316,7 +340,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         const SizedBox(height: 20),
-                        Text('ระดับ : สูงมาก',
+                        const Text('ระดับ : สูงมาก',
                             style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.red,
