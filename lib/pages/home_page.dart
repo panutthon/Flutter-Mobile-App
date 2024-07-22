@@ -197,7 +197,145 @@ class _MyHomePageState extends State<MyHomePage> {
                         )
                       ],
                     ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 25),
+                        Container(
+                          height: 80,
+                          width: 320,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                            color: Color(0xff73B5FF),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromRGBO(200, 200, 200, 0.5),
+                                blurRadius: 8,
+                              )
+                            ],
+                          ),
+                          child: Center(
+                            child: Table(
+                              columnWidths: const <int, TableColumnWidth>{
+                                0: FlexColumnWidth(),
+                                1: FlexColumnWidth(),
+                                2: FlexColumnWidth(),
+                              },
+                              children: const <TableRow>[
+                                TableRow(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'จำนวนที่วัด',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            '24',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'สูงสุด',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.Bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            '184',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ต่ำสุด',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            '133',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(Icons.calendar_today, color: Colors.blue),
+                            Text('13/06/67', style: TextStyle(fontSize: 16)),
+                            Icon(Icons.access_time, color: Colors.blue),
+                            Text('18.35', style: TextStyle(fontSize: 16)),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Text('ระดับ : สูงมาก',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _buildCircle('184', 'SYS', Colors.red),
+                            _buildCircle('115', 'DIA', Colors.green),
+                            _buildCircle('92', 'PULSE', Colors.blue),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
+
+// Add this method to your class
+
                   const SizedBox(
                       height: 20), // Add some space between the containers
                   Container(

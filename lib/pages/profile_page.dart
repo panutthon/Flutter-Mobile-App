@@ -125,16 +125,34 @@ class _MyProfilePageState extends State<MyProfilePage> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Color(0xFF3294FF),
+              Container(
+                height: 100, // Reduced height
+                padding: const EdgeInsets.symmetric(
+                    vertical: 20, horizontal: 16), // Added padding
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF3294FF), Color(0xFF4EC9FF)],
+                    begin: Alignment.bottomRight,
+                    end: Alignment.topLeft,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5,
+                      spreadRadius: 1,
+                      offset: Offset(0, 0),
+                    ),
+                  ],
                 ),
-                child: Text(
-                  'แจ้งเตือน',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                child: const Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    'แจ้งเตือน',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
