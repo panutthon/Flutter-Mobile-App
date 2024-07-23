@@ -102,7 +102,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       icon: const Icon(Icons.calendar_month_outlined,
                           color: Colors.white, size: 30.0),
                       onPressed: () {
-                        Get.toNamed('/about');
+                        Get.toNamed('/calendar');
                       },
                     ),
                   ),

@@ -57,8 +57,8 @@ class CurvedPainter extends CustomPainter {
 
 Widget _buildCircle(String value, String label, Color color) {
   return Container(
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     decoration: BoxDecoration(
       shape: BoxShape.circle,
       border: Border.all(color: color, width: 2.5),
@@ -128,7 +128,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: IconButton(
                       icon: const Icon(Icons.calendar_month_outlined,
                           color: Colors.white, size: 30.0),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed('/calendar');
+                      },
                     ),
                   ),
                   Padding(
@@ -213,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   const SizedBox(height: 40),
                   Container(
-                    height: 350,
+                    height: 415,
                     width: 350,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -374,28 +376,38 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 20),
+                            SizedBox(height: 0),
                             // Rest of your code (circles, etc.)
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            _buildCircle('184', 'SYS', Colors.red),
-                            _buildCircle('115', 'DIA', Colors.green),
-                            _buildCircle('92', 'PULSE', Colors.blue),
-                          ],
+                        SizedBox(
+                          height: 200,
+                          width: context.width,
+                          child: Stack(
+                            alignment: Alignment.topCenter,
+                            children: [
+                              _buildCircle('184', 'SYS', Colors.red),
+                              Positioned(
+                                left: 65,
+                                top: 100,
+                                child: _buildCircle('115', 'DIA', Colors.green),
+                              ),
+                              Positioned(
+                                right: 65,
+                                top: 100,
+                                child: _buildCircle('92', 'PULSE', Colors.blue),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
 
-// Add this method to your class
-
                   const SizedBox(
                       height: 20), // Add some space between the containers
                   Container(
-                    height: 110,
+                    height: 90,
                     width: 350,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -422,7 +434,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: [
                                     Icon(
                                       Icons.assessment_outlined,
-                                      size: 40,
+                                      size: 35,
                                       color: Colors.white,
                                     ),
                                     SizedBox(height: 8),
@@ -445,7 +457,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: [
                                     Icon(
                                       Icons.history,
-                                      size: 40,
+                                      size: 35,
                                       color: Colors.white,
                                     ),
                                     SizedBox(height: 8),
@@ -468,7 +480,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: [
                                     Icon(
                                       Icons.assignment,
-                                      size: 40,
+                                      size: 35,
                                       color: Colors.white,
                                     ),
                                     SizedBox(height: 8),
@@ -491,7 +503,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: [
                                     Icon(
                                       Icons.info,
-                                      size: 40,
+                                      size: 35,
                                       color: Colors.white,
                                     ),
                                     SizedBox(height: 8),
@@ -584,14 +596,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Color(0xFF3294FF),
                         size: 40.0,
                       ),
-                      SizedBox(
-                          height: 2), // เพิ่มระยะห่างระหว่างไอคอนกับข้อความ
+                      SizedBox(height: 2),
                       Text(
                         'สแกน',
                         style: TextStyle(
                           color: Color(0xFF3294FF),
                           fontWeight: FontWeight.bold,
-                          fontSize: 20, // ปรับขนาดตัวอักษรตามความเหมาะสม
+                          fontSize: 20,
                         ),
                       ),
                     ],

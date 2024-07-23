@@ -20,6 +20,7 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_profile_picture: ^2.0.0
   fl_chart: ^0.68.0
+  intl: ^0.17.0
   
 
 dev_dependencies:
