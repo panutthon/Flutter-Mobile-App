@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
+import 'package:get/get.dart';
 
 class EditPage extends StatefulWidget {
   const EditPage({super.key});
@@ -107,8 +108,10 @@ class _EditPageState extends State<EditPage> {
                         // เพิ่มการจัดการเมื่อกดปุ่มบันทึก
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                              content: Text('บันทึกการเปลี่ยนแปลงแล้ว')),
+                            content: Text('บันทึกการเปลี่ยนแปลงแล้ว'),
+                          ),
                         );
+                        Get.toNamed('/profile');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF3294FF),
@@ -120,9 +123,10 @@ class _EditPageState extends State<EditPage> {
                       child: const Text(
                         'บันทึก',
                         style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

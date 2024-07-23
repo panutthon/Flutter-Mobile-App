@@ -5,6 +5,7 @@ import 'pages/about_page.dart';
 import 'pages/adddata_page.dart';
 import 'pages/analyzedata_page.dart';
 import 'pages/calendar_page.dart';
+import 'pages/chang_page.dart';
 import 'pages/edit_page.dart';
 import 'pages/history_page.dart';
 import 'pages/home_page.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/analyzedata', page: () => const AnalyzedataPage()),
         GetPage(name: '/editprofile', page: () => const EditPage()),
         GetPage(name: '/calendar', page: () => const CalendarPage()),
+        GetPage(name: '/chang', page: () => const ChangPage()),
       ],
     );
   }
