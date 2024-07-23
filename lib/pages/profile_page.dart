@@ -205,7 +205,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   ),
                   const SizedBox(height: 20),
                   Container(
-                    height: 230,
                     width: 350,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -218,85 +217,62 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       ],
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        GestureDetector(
+                        ListTile(
+                          leading: const Icon(
+                            Icons.person,
+                            size: 40,
+                            color: Colors.blue,
+                          ),
+                          title: const Text(
+                            'แก้ไขโปรไฟล์',
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                          ),
                           onTap: () {
                             Get.toNamed('/editprofile');
                           },
-                          child: const Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  size: 40,
-                                  color: Colors.blue,
-                                ),
-                                SizedBox(width: 10),
-                                Text(
-                                  'แก้ไขโปรไฟล์',
-                                  style: TextStyle(
-                                      fontSize: 18, color: Colors.black),
-                                ),
-                              ],
-                            ),
+                        ),
+                        const Divider(height: 1),
+                        ListTile(
+                          leading: const Icon(
+                            Icons.notifications_outlined,
+                            size: 40,
+                            color: Colors.blue,
+                          ),
+                          title: const Text(
+                            'แจ้งเตือน',
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                          ),
+                          trailing: Switch(
+                            value: true, // ควรใช้ตัวแปร state จริงๆ ที่นี่
+                            onChanged: (bool value) {
+                              // ควรอัปเดต state ที่นี่
+                            },
+                            activeColor: Colors.white, // เพิ่มสีไอคอนเป็นสีฟ้า
+                            activeTrackColor: const Color(
+                                0xFF3294FF), // เพิ่มสีพื้นหลังเป็นสีฟ้า
                           ),
                         ),
-                        const Divider(
-                          height: 5,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.notifications_outlined,
-                                size: 40,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                'แจ้งเตือน',
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.black),
-                              ),
-                            ],
+                        const Divider(height: 1),
+                        ListTile(
+                          leading: const Icon(
+                            Icons.settings,
+                            size: 40,
+                            color: Colors.blue,
                           ),
-                        ),
-                        const Divider(
-                          height: 5,
-                        ),
-                        GestureDetector(
+                          title: const Text(
+                            'ตั้งค่า',
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                          ),
                           onTap: () {
                             Get.toNamed('/setting');
                           },
-                          child: const Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.settings,
-                                  size: 40,
-                                  color: Colors.blue,
-                                ),
-                                SizedBox(width: 10),
-                                Text(
-                                  'ตั้งค่า',
-                                  style: TextStyle(
-                                      fontSize: 18, color: Colors.black),
-                                ),
-                              ],
-                            ),
-                          ),
                         ),
                       ],
                     ),
                   ),
                   const SizedBox(height: 20),
                   Container(
-                    height: 75,
                     width: 350,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -308,32 +284,22 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         )
                       ],
                     ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.logout_outlined,
-                                size: 40,
-                                color: Colors.red,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                'ออกจากระบบ',
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.red),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.logout_outlined,
+                        size: 40,
+                        color: Colors.red,
+                      ),
+                      title: const Text(
+                        'ออกจากระบบ',
+                        style: TextStyle(fontSize: 18, color: Colors.red),
+                      ),
+                      onTap: () {
+                        // ใส่โค้ดสำหรับการออกจากระบบที่นี่
+                      },
                     ),
                   ),
-                  const SizedBox(height: 20), // เพิ่มระยะห่างด้านล่าง
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
@@ -373,7 +339,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 if (index == 0) {
                   Get.toNamed('/');
                 } else if (index == 1) {
-                  Get.toNamed('/about');
+                  Get.toNamed('');
                 } else if (index == 2) {
                   Get.toNamed('/profile');
                 }
@@ -382,7 +348,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
             Positioned(
               top: -40, // ปรับตำแหน่งให้ยื่นขึ้นมาจาก BottomNavigationBar
               child: GestureDetector(
-                onTap: () => Get.toNamed('/about'),
+                // onTap: () => Get.toNamed(''),
                 child: Container(
                   height: 100,
                   width: 100,

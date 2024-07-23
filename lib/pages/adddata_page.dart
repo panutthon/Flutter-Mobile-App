@@ -41,7 +41,7 @@ class AdddataPage extends StatelessWidget {
           ),
         ),
       ),
-      body: const Text('text body'),
+      body: const Text(''),
     );
   }
 }

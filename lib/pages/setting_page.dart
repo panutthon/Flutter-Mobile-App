@@ -8,12 +8,9 @@ class SettingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
-          color: Colors.white, //change your color here
+          color: Colors.white,
         ),
         toolbarHeight: 85.0,
-        // backgroundColor: const Color(0xFF3294FF),
-        // title: Image.asset('assets/images/logo.png', width: 50, height: 50),
-        // centerTitle: true,
         title: const Text(
           'ตั้งค่า',
           style: TextStyle(
@@ -22,7 +19,6 @@ class SettingPage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -41,7 +37,29 @@ class SettingPage extends StatelessWidget {
           ),
         ),
       ),
-      body: const Text('text body'),
+      body: ListView(
+        children: [
+          _buildSettingItem('เปลี่ยนภาษา', Icons.language, onTap: () {}),
+          _buildSettingItem('เปลี่ยนรหัสผ่าน', Icons.key, onTap: () {}),
+          _buildSettingItem('เปลี่ยน PIN', Icons.lock, onTap: () {}),
+          _buildSettingItem('เกี่ยวกับแอป', Icons.info, onTap: () {}),
+          _buildSettingItem('ติดต่อเรา', Icons.mail, onTap: () {}),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSettingItem(String title, IconData icon, {VoidCallback? onTap}) {
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(icon, color: Colors.blue),
+          title: Text(title),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: onTap,
+        ),
+        const Divider(),
+      ],
     );
   }
 }

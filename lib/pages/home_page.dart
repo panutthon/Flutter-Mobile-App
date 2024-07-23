@@ -563,7 +563,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 if (index == 0) {
                   Get.toNamed('/');
                 } else if (index == 1) {
-                  Get.toNamed('/about');
+                  Get.toNamed('');
                 } else if (index == 2) {
                   Get.toNamed('/profile');
                 }
@@ -572,7 +572,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Positioned(
               top: -40, // ปรับตำแหน่งให้ยื่นขึ้นมาจาก BottomNavigationBar
               child: GestureDetector(
-                onTap: () => Get.toNamed('/about'),
+                // onTap: () => Get.toNamed(''),
                 child: Container(
                   height: 100,
                   width: 100,
