@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 
-class EditPage extends StatelessWidget {
+class EditPage extends StatefulWidget {
   const EditPage({super.key});
+
+  @override
+  State<EditPage> createState() => _EditPageState();
+}
+
+class _EditPageState extends State<EditPage> {
+  final TextEditingController _nameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController.text = "ปณัฐทรณ์ ชนาชน"; // ตั้งค่าเริ่มต้นของชื่อผู้ใช้
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.white, //change your color here
-        ),
+        iconTheme: const IconThemeData(color: Colors.white),
         toolbarHeight: 85.0,
-        // backgroundColor: const Color(0xFF3294FF),
-        // title: Image.asset('assets/images/logo.png', width: 50, height: 50),
-        // centerTitle: true,
         title: const Text(
           'แก้ไขโปรไฟล์',
           style: TextStyle(
@@ -22,7 +31,6 @@ class EditPage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -41,7 +49,95 @@ class EditPage extends StatelessWidget {
           ),
         ),
       ),
-      body: const Text(''),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: const ProfilePicture(
+                name: 'ปณัฐฑรณ์ ชนาชน',
+                radius: 64,
+                fontsize: 24,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'ชื่อผู้ใช้',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Color(0xFF3294FF)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                            color: Color(0xFF3294FF), width: 2),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.edit, color: Color(0xFF3294FF)),
+                        onPressed: () {
+                          // เพิ่มการจัดการเมื่อกดปุ่มแก้ไข
+                        },
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // เพิ่มการจัดการเมื่อกดปุ่มบันทึก
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('บันทึกการเปลี่ยนแปลงแล้ว')),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF3294FF),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: const Text(
+                        'บันทึก',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
   }
 }

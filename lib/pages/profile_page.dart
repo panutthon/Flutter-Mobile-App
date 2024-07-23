@@ -193,7 +193,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     child: const ProfilePicture(
                       name: 'ปณัฐฑรณ์ ชนาชน',
                       radius: 64,
-                      fontsize: 21,
+                      fontsize: 24,
                     ),
                   ),
                   const Text(
