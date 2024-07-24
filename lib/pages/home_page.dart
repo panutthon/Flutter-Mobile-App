@@ -129,7 +129,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: const Icon(Icons.calendar_month_outlined,
                           color: Colors.white, size: 30.0),
                       onPressed: () {
-                        Get.toNamed('/calendar');
+                        showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2100),
+                        ).then((selectedDate) {
+                          if (selectedDate != null) {
+                            // ทำอะไรกับวันที่ที่เลือก เช่น อัพเดทสถานะหรือนำทางไปยังหน้าอื่น
+                            print("Selected date: $selectedDate");
+                          }
+                        });
                       },
                     ),
                   ),

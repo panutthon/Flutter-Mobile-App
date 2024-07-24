@@ -99,16 +99,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: IconButton(
-                      icon: const Icon(Icons.calendar_month_outlined,
-                          color: Colors.white, size: 30.0),
-                      onPressed: () {
-                        Get.toNamed('/calendar');
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: IconButton(
                       icon: const Icon(Icons.notifications,
                           color: Colors.white, size: 30.0),
                       onPressed: () {
