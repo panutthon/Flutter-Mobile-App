@@ -28,18 +28,18 @@ class CurvedPainter extends CustomPainter {
 
     var path = Path()
       ..moveTo(0, 0)
-      ..lineTo(0, size.height * 1.00)
+      ..lineTo(0, size.height * 0.80)
       ..quadraticBezierTo(
         size.width * 0.1,
-        size.height * 1.25,
-        size.width * 0.50,
+        size.height * 1.10,
+        size.width * 0.44,
         size.height * 0.75,
       )
       ..quadraticBezierTo(
         size.width * 0.75,
         size.height * 0.45,
         size.width,
-        size.height * 1.2,
+        size.height * 1.0,
       )
       ..lineTo(size.width, 0)
       ..close();
@@ -57,8 +57,8 @@ class CurvedPainter extends CustomPainter {
 
 Widget _buildCircle(String value, String label, Color color) {
   return Container(
-    width: 100,
-    height: 100,
+    width: 95,
+    height: 95,
     decoration: BoxDecoration(
       shape: BoxShape.circle,
       border: Border.all(color: color, width: 2.5),
@@ -86,11 +86,63 @@ Widget _buildCircle(String value, String label, Color color) {
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // ข้อมูล mock
+  final List<Map<String, dynamic>> mockData = [
+    {
+      "date": "13/06/67",
+      "time": "18.35",
+      "sys": 184,
+      "dia": 115,
+      "pulse": 92,
+      "level": "สูงมาก",
+      "count": 4,
+      "max": 184,
+      "min": 133,
+    },
+    {
+      "date": "12/06/67",
+      "time": "16.15",
+      "sys": 170,
+      "dia": 102,
+      "pulse": 87,
+      "level": "สูง",
+      "count": 3,
+      "max": 170,
+      "min": 133,
+    },
+    {
+      "date": "11/06/67",
+      "time": "14.35",
+      "sys": 145,
+      "dia": 95,
+      "pulse": 84,
+      "level": "เริ่มสูง",
+      "count": 2,
+      "max": 145,
+      "min": 133,
+    },
+    {
+      "date": "10/06/67",
+      "time": "17.30",
+      "sys": 133,
+      "dia": 72,
+      "pulse": 83,
+      "level": "ปกติ",
+      "count": 1,
+      "max": 133,
+      "min": 133,
+    },
+
+    // เพิ่มข้อมูลเพิ่มเติมตามต้องการ
+  ];
+
+  // เพิ่มตัวแปรสำหรับเก็บ index ของข้อมูล
+  int _currentIndex = 0;
+
   @override
   void initState() {
     super.initState();
-
-    ///print('initState');
+    //print('initState');
   }
 
   @override
@@ -163,9 +215,9 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: EdgeInsets.zero,
             children: [
               Container(
-                height: 100, // Reduced height
-                padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 16), // Added padding
+                height: 100,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [Color(0xFF3294FF), Color(0xFF4EC9FF)],
@@ -193,26 +245,181 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              ListTile(
-                leading: const Icon(Icons.home),
-                title: const Text('Home'),
-                onTap: () {
-                  Get.toNamed('/');
-                },
+              const ListTile(
+                leading: Icon(Icons.access_alarm, color: Colors.blue),
+                title: Text(
+                  'วันนี้อย่าลืมวัดความดันนะครับ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 25/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.system_update, color: Colors.green),
+                title: Text(
+                  'แอพพลิเคชั่นเวอร์ชั่นใหม่ 1.0.1 พร้อมใช้งานแล้ว',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 24/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
               ),
               ListTile(
-                leading: const Icon(Icons.camera_alt),
-                title: const Text('Scan'),
-                onTap: () {
-                  Get.toNamed('/about');
-                },
+                leading: const Icon(Icons.warning, color: Colors.red),
+                title: RichText(
+                  text: const TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'ความดันของคุณ ',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: 'สูงเกินไป',
+                        style: TextStyle(fontSize: 16, color: Colors.red),
+                      ),
+                      TextSpan(
+                        text: ' กรุณาปรึกษาหมอ',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+                subtitle: const Text(
+                  'วันที่ 23/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.notifications, color: Colors.orange),
+                title: Text(
+                  'ถึงเวลาวัดความดันประจำวันแล้วนะครับ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 22/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.update, color: Colors.blue),
+                title: Text(
+                  'มีการอัพเดทข้อมูลใหม่ กรุณาตรวจสอบ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 21/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
               ),
               ListTile(
-                leading: const Icon(Icons.person),
-                title: const Text('Profile'),
-                onTap: () {
-                  Get.toNamed('/profile');
-                },
+                leading: const Icon(Icons.error, color: Colors.red),
+                title: RichText(
+                  text: const TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'ข้อมูลการวัดพบว่า ',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: 'ความดันของคุณสูงเกินไป',
+                        style: TextStyle(fontSize: 16, color: Colors.red),
+                      ),
+                      TextSpan(
+                        text: ' ติดต่อแพทย์ทันที',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+                subtitle: const Text(
+                  'วันที่ 20/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              ListTile(
+                leading: const Icon(Icons.warning_amber_rounded,
+                    color: Colors.yellow),
+                title: RichText(
+                  text: const TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'ความดันต่ำกว่าปกติ ',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: 'กรุณาตรวจสอบอีกครั้ง',
+                        style: TextStyle(fontSize: 16, color: Colors.red),
+                      ),
+                    ],
+                  ),
+                ),
+                subtitle: const Text(
+                  'วันที่ 19/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.info, color: Colors.blue),
+                title: Text(
+                  'ข้อมูลการวัดบันทึกเรียบร้อยแล้ว',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 18/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.access_alarm, color: Colors.blue),
+                title: Text(
+                  'วันนี้อย่าลืมวัดความดันนะครับ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 17/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.system_update, color: Colors.green),
+                title: Text(
+                  'แอพพลิเคชั่นเวอร์ชั่นใหม่ 1.0.0 พร้อมใช้งานแล้ว',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 16/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
               ),
             ],
           ),
@@ -223,9 +430,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 8),
                   Container(
-                    height: 415,
+                    height: 390,
                     width: 350,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -240,7 +447,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 25),
+                        const SizedBox(height: 20),
                         Container(
                           height: 80,
                           width: 320,
@@ -261,16 +468,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 1: FlexColumnWidth(),
                                 2: FlexColumnWidth(),
                               },
-                              children: const <TableRow>[
+                              children: <TableRow>[
                                 TableRow(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text(
+                                          const Text(
                                             'จำนวนที่วัด',
                                             style: TextStyle(
                                               fontSize: 16,
@@ -279,8 +486,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                           ),
                                           Text(
-                                            '24',
-                                            style: TextStyle(
+                                            '${mockData[_currentIndex]['count']}',
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
@@ -290,12 +497,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text(
+                                          const Text(
                                             'สูงสุด',
                                             style: TextStyle(
                                               fontSize: 16,
@@ -304,8 +511,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                           ),
                                           Text(
-                                            '184',
-                                            style: TextStyle(
+                                            '${mockData[_currentIndex]['max']}',
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
@@ -315,12 +522,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text(
+                                          const Text(
                                             'ต่ำสุด',
                                             style: TextStyle(
                                               fontSize: 16,
@@ -329,8 +536,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                           ),
                                           Text(
-                                            '133',
-                                            style: TextStyle(
+                                            '${mockData[_currentIndex]['min']}',
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
@@ -345,67 +552,115 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 20),
-                        const Column(
+                        const SizedBox(height: 15),
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(left: 16.0),
+                              padding: const EdgeInsets.only(left: 16.0),
                               child: Row(
                                 children: [
-                                  Icon(Icons.calendar_today_outlined,
+                                  const Icon(Icons.calendar_today_outlined,
                                       color: Colors.blue),
-                                  SizedBox(width: 10),
-                                  Text('13/06/67',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        // fontWeight: FontWeight.bold,
-                                      )),
-                                  SizedBox(width: 16),
-                                  Icon(Icons.access_alarm, color: Colors.blue),
-                                  SizedBox(width: 10),
-                                  Text('18.35',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        // fontWeight: FontWeight.bold,
-                                      )),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    '${mockData[_currentIndex]['date']}',
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 16),
+                                  const Icon(Icons.access_alarm,
+                                      color: Colors.blue),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    '${mockData[_currentIndex]['time']}',
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 1),
                             Align(
                               alignment: Alignment.centerRight,
                               child: Padding(
-                                padding: EdgeInsets.only(right: 16.0),
+                                padding: const EdgeInsets.only(right: 16.0),
                                 child: Text(
-                                  'ระดับ : สูงมาก',
-                                  style: TextStyle(
+                                  'ระดับ : ${mockData[_currentIndex]['level']}',
+                                  style: const TextStyle(
                                       fontSize: 18,
                                       color: Colors.red,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
-                            SizedBox(height: 0),
-                            // Rest of your code (circles, etc.)
                           ],
                         ),
                         SizedBox(
-                          height: 200,
+                          // เพิ่มความสูงของ Stack ตรงนี้
                           width: context.width,
                           child: Stack(
-                            alignment: Alignment.topCenter,
+                            alignment: Alignment.center,
                             children: [
-                              _buildCircle('184', 'SYS', Colors.red),
-                              Positioned(
-                                left: 65,
-                                top: 100,
-                                child: _buildCircle('115', 'DIA', Colors.green),
-                              ),
-                              Positioned(
-                                right: 65,
-                                top: 100,
-                                child: _buildCircle('92', 'PULSE', Colors.blue),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.arrow_back_ios),
+                                    onPressed: () {
+                                      setState(() {
+                                        _currentIndex = (_currentIndex - 1)
+                                            .clamp(0, mockData.length - 1);
+                                      });
+                                    },
+                                  ),
+                                  Expanded(
+                                    child: SizedBox(
+                                      height: 200,
+                                      child: Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Positioned(
+                                            top:
+                                                0, // Adjust the position as needed
+                                            child: _buildCircle(
+                                                '${mockData[_currentIndex]['sys']}',
+                                                'SYS',
+                                                Colors.red),
+                                          ),
+                                          Positioned(
+                                            left: 15,
+                                            top: 90, // ปรับตำแหน่งให้ลดลงมา
+                                            child: _buildCircle(
+                                                '${mockData[_currentIndex]['dia']}',
+                                                'DIA',
+                                                Colors.green),
+                                          ),
+                                          Positioned(
+                                            right: 15,
+                                            top: 90, // ปรับตำแหน่งให้ลดลงมา
+                                            child: _buildCircle(
+                                                '${mockData[_currentIndex]['pulse']}',
+                                                'PULSE',
+                                                Colors.blue),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(Icons.arrow_forward_ios),
+                                    onPressed: () {
+                                      setState(() {
+                                        _currentIndex = (_currentIndex + 1)
+                                            .clamp(0, mockData.length - 1);
+                                      });
+                                    },
+                                  ),
+                                ],
                               ),
                             ],
                           ),

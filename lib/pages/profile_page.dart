@@ -116,9 +116,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
             padding: EdgeInsets.zero,
             children: [
               Container(
-                height: 100, // Reduced height
-                padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 16), // Added padding
+                height: 100,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [Color(0xFF3294FF), Color(0xFF4EC9FF)],
@@ -146,26 +146,181 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   ),
                 ),
               ),
-              ListTile(
-                leading: const Icon(Icons.home),
-                title: const Text('Home'),
-                onTap: () {
-                  Get.toNamed('/');
-                },
+              const ListTile(
+                leading: Icon(Icons.access_alarm, color: Colors.blue),
+                title: Text(
+                  'วันนี้อย่าลืมวัดความดันนะครับ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 25/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.system_update, color: Colors.green),
+                title: Text(
+                  'แอพพลิเคชั่นเวอร์ชั่นใหม่ 1.0.1 พร้อมใช้งานแล้ว',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 24/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
               ),
               ListTile(
-                leading: const Icon(Icons.camera_alt),
-                title: const Text('Scan'),
-                onTap: () {
-                  Get.toNamed('/about');
-                },
+                leading: const Icon(Icons.warning, color: Colors.red),
+                title: RichText(
+                  text: const TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'ความดันของคุณ ',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: 'สูงเกินไป',
+                        style: TextStyle(fontSize: 16, color: Colors.red),
+                      ),
+                      TextSpan(
+                        text: ' กรุณาปรึกษาหมอ',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+                subtitle: const Text(
+                  'วันที่ 23/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.notifications, color: Colors.orange),
+                title: Text(
+                  'ถึงเวลาวัดความดันประจำวันแล้วนะครับ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 22/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.update, color: Colors.blue),
+                title: Text(
+                  'มีการอัพเดทข้อมูลใหม่ กรุณาตรวจสอบ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 21/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
               ),
               ListTile(
-                leading: const Icon(Icons.person),
-                title: const Text('Profile'),
-                onTap: () {
-                  Get.toNamed('/profile');
-                },
+                leading: const Icon(Icons.error, color: Colors.red),
+                title: RichText(
+                  text: const TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'ข้อมูลการวัดพบว่า ',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: 'ความดันของคุณสูงเกินไป',
+                        style: TextStyle(fontSize: 16, color: Colors.red),
+                      ),
+                      TextSpan(
+                        text: ' ติดต่อแพทย์ทันที',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+                subtitle: const Text(
+                  'วันที่ 20/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              ListTile(
+                leading: const Icon(Icons.warning_amber_rounded,
+                    color: Colors.yellow),
+                title: RichText(
+                  text: const TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'ความดันต่ำกว่าปกติ ',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: 'กรุณาตรวจสอบอีกครั้ง',
+                        style: TextStyle(fontSize: 16, color: Colors.red),
+                      ),
+                    ],
+                  ),
+                ),
+                subtitle: const Text(
+                  'วันที่ 19/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.info, color: Colors.blue),
+                title: Text(
+                  'ข้อมูลการวัดบันทึกเรียบร้อยแล้ว',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 18/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.access_alarm, color: Colors.blue),
+                title: Text(
+                  'วันนี้อย่าลืมวัดความดันนะครับ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 17/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ),
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              const ListTile(
+                leading: Icon(Icons.system_update, color: Colors.green),
+                title: Text(
+                  'แอพพลิเคชั่นเวอร์ชั่นใหม่ 1.0.0 พร้อมใช้งานแล้ว',
+                  style: TextStyle(fontSize: 16),
+                ),
+                subtitle: Text(
+                  'วันที่ 16/07/2024',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
               ),
             ],
           ),

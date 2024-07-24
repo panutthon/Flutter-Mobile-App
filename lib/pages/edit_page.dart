@@ -106,11 +106,11 @@ class _EditPageState extends State<EditPage> {
                     child: ElevatedButton(
                       onPressed: () {
                         // เพิ่มการจัดการเมื่อกดปุ่มบันทึก
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('บันทึกการเปลี่ยนแปลงแล้ว'),
-                          ),
-                        );
+                        // ScaffoldMessenger.of(context).showSnackBar(
+                        //   const SnackBar(
+                        //     content: Text('บันทึกการเปลี่ยนแปลงแล้ว'),
+                        //   ),
+                        // );
                         Get.toNamed('/profile');
                       },
                       style: ElevatedButton.styleFrom(
